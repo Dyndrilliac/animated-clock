@@ -45,19 +45,18 @@ public class AnimatedClock
 		if (choice == JOptionPane.YES_OPTION)
 		{
 			mainWindow = new ApplicationWindow(null, "Animated Clock Application", new Dimension(300, 300), true, false, 
-				true, null, myDrawGUI);
+				null, myDrawGUI);
 		}
 		else if (choice == JOptionPane.NO_OPTION)
 		{
 			mainWindow = new ApplicationWindow(null, "Animated Clock Application", new Dimension(300, 300), false, false, 
-				true, null, myDrawGUI);
+				null, myDrawGUI);
 		}
 		else
 		{
 			return;
 		}
 		
-		mainWindow.drawGUI();
-		mainWindow.setVisible(true);
+		mainWindow.setIconImageByResourceName("icon.png");
 	}
 }
