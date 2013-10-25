@@ -8,15 +8,22 @@
 import api.gui.*;
 import api.util.*;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+
+import javax.swing.JOptionPane;
 
 public class AnimatedClock
 {
+	private static boolean debugMode = false;
+	
 	public static final void main(final String[] args)
 	{
 		ApplicationWindow mainWindow = null;
-		int choice = Support.promptDebugMode(mainWindow);
+		int               choice     = Support.promptDebugMode(mainWindow);
+		
+		debugMode = (choice == JOptionPane.YES_OPTION);
 		
 		// Define a self-contained interface construction event handler.
 		EventHandler myDrawGUI = new EventHandler()
@@ -42,20 +49,8 @@ public class AnimatedClock
 			}
 		};
 		
-		if (choice == JOptionPane.YES_OPTION)
-		{
-			mainWindow = new ApplicationWindow(null, "Animated Clock Application", new Dimension(300, 300), true, false, 
-				null, myDrawGUI);
-		}
-		else if (choice == JOptionPane.NO_OPTION)
-		{
-			mainWindow = new ApplicationWindow(null, "Animated Clock Application", new Dimension(300, 300), false, false, 
-				null, myDrawGUI);
-		}
-		else
-		{
-			return;
-		}
+		mainWindow = new ApplicationWindow(null, "Animated Clock Application", new Dimension(300, 300), debugMode, false, 
+			null, myDrawGUI);
 		
 		mainWindow.setIconImageByResourceName("icon.png");
 	}
