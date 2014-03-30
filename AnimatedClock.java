@@ -5,6 +5,7 @@
 	
 	This program displays an animated clock.
 */
+
 import api.gui.*;
 import api.util.*;
 
