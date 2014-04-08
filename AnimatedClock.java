@@ -15,8 +15,6 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
-import javax.swing.JOptionPane;
-
 public class AnimatedClock
 {
 	public final static void main(final String[] args)
@@ -29,7 +27,7 @@ public class AnimatedClock
 	
 	public AnimatedClock()
 	{
-		this.setDebugging((Support.promptDebugMode(this.getWindow()) == JOptionPane.YES_OPTION));
+		this.setDebugging(Support.promptDebugMode(this.getWindow()));
 		
 		// Define a self-contained interface construction event handler.
 		EventHandler myDrawGUI = new EventHandler(this)
