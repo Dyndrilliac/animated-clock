@@ -16,39 +16,29 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 public class AnimatedClock
-{
+{	
 	public final static void main(final String[] args)
 	{
-		new AnimatedClock();
+		new AnimatedClock(args);
 	}
 	
 	private boolean				isDebugging	= false;
 	private ApplicationWindow	window		= null;
 	
-	public AnimatedClock()
+	public AnimatedClock(final String[] args)
 	{
 		this.setDebugging(Support.promptDebugMode(this.getWindow()));
 		
 		// Define a self-contained interface construction event handler.
-		EventHandler myDrawGUI = new EventHandler(this)
+		EventHandler<AnimatedClock> myDrawGUI = new EventHandler<AnimatedClock>(this)
 		{
-			private final static long	serialVersionUID	= 1L;
+			private final static long serialVersionUID = 1L;
 
 			@Override
-			public final void run(final Object... arguments) throws IllegalArgumentException
+			public final void run(final ApplicationWindow window)
 			{
-				if (arguments.length <= 0)
-				{
-					throw new IllegalArgumentException("myDrawGUI Error : incorrect number of arguments.");
-				}
-				else if (!(arguments[0] instanceof ApplicationWindow))
-				{
-					throw new IllegalArgumentException("myDrawGUI Error : argument[0] is of incorrect type.");
-				}
-				
-				ApplicationWindow	window		= (ApplicationWindow)arguments[0];
-				Container			contentPane	= window.getContentPane();
-				Clock				clock		= new Clock(true);
+				Container	contentPane	= window.getContentPane();
+				Clock		clock		= new Clock(true);
 				
 				contentPane.setLayout(new FlowLayout());
 				contentPane.add(clock);
@@ -56,7 +46,7 @@ public class AnimatedClock
 			}
 		};
 		
-		this.setWindow(new ApplicationWindow(null, "Animated Clock Application", new Dimension(300, 300), this.isDebugging(), false, null, myDrawGUI));
+		this.setWindow(new ApplicationWindow(null, "Animated Clock Application", new Dimension(350, 300), this.isDebugging(), false, null, myDrawGUI));
 		this.getWindow().setIconImageByResourceName("icon.png");
 	}
 	
