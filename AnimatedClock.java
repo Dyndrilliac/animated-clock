@@ -10,8 +10,8 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
-import api.gui.ApplicationWindow;
-import api.gui.Clock;
+import api.gui.draw.Clock;
+import api.gui.swing.ApplicationWindow;
 import api.util.EventHandler;
 import api.util.Support;
 
